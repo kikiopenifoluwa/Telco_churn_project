@@ -58,34 +58,6 @@ df["TotalCharges"] = pd.to_numeric(df["TotalCharges"],errors="coerce")
 
 df.pivot_table(columns="Contract", aggfunc={"TotalCharges":"sum"})
 
-# df.groupby(["Contract", "Churn"]).size().unstack().plot(
-#     kind="bar",
-#     stacked=True,
-#     figsize=(5, 5)
-# )
-#
-# plt.xlabel("Contract")
-# plt.ylabel("Count")
-# plt.xticks(rotation=0)
-# plt.show()
-#
-# df.groupby(["SeniorCitizen", "Churn"]).size().unstack().plot(
-#     kind="bar",
-#     stacked=True,
-#     figsize=(5, 5)
-#     );
-#
-# plt.xlabel("Age Group")
-# plt.ylabel("Count")
-# plt.xticks([0, 1],["Young", "Old"])
-# plt.show()
-#
-# newer_customers = df[df["tenure"] <= 6]
-# older_customers = df[df["tenure"] > 6]
-#
-# newer_customers["Churn"].value_counts(normalize=True)
-#
-# older_customers["Churn"].value_counts(normalize=True)
 
 def data_preprocessor(df):
 
@@ -156,109 +128,7 @@ X_train, X_test, y_train, y_test = train_test_split(
     test_size=0.2,
     random_state=42
 )
-#
-# len(list(X_train.columns))
-#
-# models = {
-#     "LogisticRegression": LogisticRegression(),
-#
-#     "DecisionTreeClassifier":
-#         DecisionTreeClassifier(random_state=42),
-#
-#     "RandomForestClassifier":
-#         RandomForestClassifier(random_state=42),
-#
-#     "KNeighboursClassifier":
-#         KNeighborsClassifier(),
-#
-#     "SupportVectorClassifier":
-#         SVC(probability=True, random_state=42),
-#
-#     "VotingClassifier":
-#         VotingClassifier(
-#             voting="hard",
-#             estimators=[
-#                 ("lr", LogisticRegression()),
-#                 ("dt", DecisionTreeClassifier(random_state=42)),
-#                 ("rf", RandomForestClassifier(random_state=42)),
-#                 ("knn", KNeighborsClassifier()),
-#                 ("svc", SVC(probability=True, random_state=42))
-#             ]
-#         )
-# }
-#
-# counter = 0
-#
-# for model_name, model in models.items():
-#
-#     pipe = Pipeline([
-#         ("custom cleaner", FunctionTransformer(data_preprocessor)),
-#         ("model", model)
-#     ])
-#
-#     # Train
-#     pipe.fit(X_train, y_train)
-#
-#     # Predict ONCE
-#     y_train_pred = pipe.predict(X_train)
-#     y_test_pred = pipe.predict(X_test)
-#
-#     # Training metrics
-#     train_precision = precision_score(
-#         y_train,
-#         y_train_pred,
-#         pos_label="Yes"
-#     )
-#
-#     train_recall = recall_score(
-#         y_train,
-#         y_train_pred,
-#         pos_label="Yes"
-#     )
-#
-#     train_accuracy = accuracy_score(
-#         y_train,
-#         y_train_pred
-#     )
-#
-#     train_f1 = f1_score(
-#         y_train,
-#         y_train_pred,
-#         pos_label="Yes"
-#     )
-#
-#     # Test report
-#     test_report = classification_report(
-#         y_test,
-#         y_test_pred
-#     )
-#
-#     print(f"Result_{counter + 1}: {model_name}")
-#     print("=" * 60)
-#
-#     print("TRAINING RESULTS")
-#     print(f"Precision: {train_precision:.4f}")
-#     print(f"Recall:    {train_recall:.4f}")
-#     print(f"Accuracy:  {train_accuracy:.4f}")
-#     print(f"F1 Score:  {train_f1:.4f}")
-#
-#     print("\nTEST RESULTS")
-#     print(test_report)
-#
-#     # Confusion Matrix
-#     ConfusionMatrixDisplay.from_predictions(
-#         y_test,
-#         y_test_pred,
-#         display_labels=["No Churn", "Churn"]
-#     )
-#
-#     plt.title(f"Confusion Matrix - {model_name}")
-#     plt.show()
-#
-#     print("=" * 60)
-#     print()
-#
-#     counter += 1
+
 
 model = VotingClassifier(
             voting="hard",
@@ -286,5 +156,4 @@ file_path = os.path.join(model_dir,"Telco_model.pkl")
 with open(file_path, "wb") as f:
     pickle.dump(choice_model, f)
 
-#df["Churn"].value_counts(normalize = True)
 

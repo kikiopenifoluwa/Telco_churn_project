@@ -2,17 +2,21 @@ from flask import Flask, render_template, request
 import pandas as pd
 import boto3
 import pickle
+from dotenv import load_dotenv
+import os
+load_dotenv()
+bucket = os.getenv("S3_BUCKET")
+key = os.getenv("S3_KEY")
 
 from preprocessing import data_preprocessor
+
+
 s3 = boto3.client('s3')
 response = s3.get_object(
-    Bucket = "nifo-bucket",
-    Key = "Telco_model_colab.pkl"
+    Bucket = bucket,
+    Key = key
 )
-
-#model = pickle.loads(response['Body'].read())
-# with open("Telco_model_colab.pkl", "rb") as file:
-#     model = pickle.load(file)
+model = pickle.loads(response['Body'].read())
 application = Flask(__name__)
 app = application
 
