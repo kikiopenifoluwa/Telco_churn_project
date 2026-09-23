@@ -18,10 +18,6 @@ This project develops a machine learning pipeline that:
 * Retrieves the trained model from Amazon S3
 * Provides a container configuration for deployment
 
-The project is available on [GitHub](https://github.com/kikiopenifoluwa/Telco_churn_project?utm_source=chatgpt.com).
-
----
-
 ## 🎯 Problem Statement
 
 Customer churn occurs when an existing customer stops using a company's services.
@@ -171,7 +167,7 @@ The ensemble uses hard voting and combines:
 * K-Nearest Neighbors
 * Support Vector Classifier
 
-The notebook defines the ensemble with:
+The ensemble is defined with:
 
 ```python
 VotingClassifier(
@@ -613,23 +609,8 @@ Potential improvements to the project include:
 
 # 👤 Author
 
-**Kiki Openifoluwa**
+**Kikiope
 
-GitHub:
-[@kikiopenifoluwa](https://github.com/kikiopenifoluwa?utm_source=chatgpt.com)
-
-Project:
-[Telco Churn Project](https://github.com/kikiopenifoluwa/Telco_churn_project?utm_source=chatgpt.com)
-
----
-
-# 📄 License
-
-No license file is currently included in the repository.
-
-If you intend to distribute the project as open source, consider adding an appropriate license.
-
----
 
 ## ⭐ Project Summary
 
