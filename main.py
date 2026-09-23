@@ -10,9 +10,6 @@ response = s3.get_object(
     Key = "Telco_model_colab.pkl"
 )
 
-#model = pickle.loads(response['Body'].read())
-# with open("Telco_model_colab.pkl", "rb") as file:
-#     model = pickle.load(file)
 application = Flask(__name__)
 app = application
 
